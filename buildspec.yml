@@ -20,14 +20,14 @@ phases:
       - echo Building the Docker image...
       # Build and tag Docker image
       - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      #- docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
   post_build:
     commands:
       - echo Build completed on date
       - echo Pushing the Docker image to ECR...
       # Push Docker images to ECR
       - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
+      #- docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
       # Define container name and create imagedefinitions.json for ECS
       - DOCKER_CONTAINER_NAME=springboot
